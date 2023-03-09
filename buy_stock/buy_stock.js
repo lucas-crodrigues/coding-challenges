@@ -1,14 +1,16 @@
 var maxProfit = function(prices) {
-  let profit = 0;
-  let current;
-  while (prices.length != 0) {
-      current = prices.shift()
-      prices.map(e => {
-          let potencial = e - current;
-          if (potencial > profit)
-              profit = potencial;
-      })
+  let buy = 0;
+  let sell = 1;
+  let max_profit = 0;
+  
+  while (sell < prices.length){
+    if (prices[buy] < prices[sell]) {
+      let profit = prices[sell] - prices[buy];
+      max_profit = Math.max(max_profit, profit);
+    } else {
+      buy = sell;
+    }
+    sell++;
   }
-
-  return profit;
+  return max_profit;
 };
