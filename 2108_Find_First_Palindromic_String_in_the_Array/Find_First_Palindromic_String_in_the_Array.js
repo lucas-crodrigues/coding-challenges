@@ -13,3 +13,14 @@ var firstPalindrome = function(words) {
   })
   return ans[0] || ""
 };
+
+// The above solution is not efficient. It is not necessary to check all the words in the array. We can return the first palindrome word we find.
+
+var firstPalindrome = function(words) {
+  for (const word of words) {
+      if (word === word.split("").reverse().join("")) {
+          return word;
+      }
+  }
+  return "";
+};
